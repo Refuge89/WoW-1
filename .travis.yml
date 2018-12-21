@@ -20,6 +20,7 @@ before_install:
  - sudo apt-get install -qq libbz2-dev libncurses5-dev libmysqlclient-dev libreadline-dev libsdl1.2-dev libssl-dev zlib1g-dev
 
 script:
-  - mkdir Ascemu
-  - cd Ascemu
-  - cmake ../ -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=1
+  - test -d _build || mkdir _build
+  - cd _build
+  - cmake ../ -DCMAKE_BUILD_TYPE=Release
+
