@@ -1,0 +1,11 @@
+#ifndef GIT_VERSION_HPP
+#define GIT_VERSION_HPP
+
+#define BUILD_TAG "5.0-TRUNK"
+#define BUILD_HASH "@git_commit@"
+#define COMMIT_TIMESTAMP "0x0"
+#define BUILD_HASH_STR "0"
+#define BUILD_USER_STR "@BUILD_USERNAME@"
+#define BUILD_HOST_STR "@BUILD_HOSTNAME@"
+
+#endif

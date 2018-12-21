@@ -1,0 +1,338 @@
+# Copyright (C) 2014-2016 AscEmu Team <http://www.ascemu.org>
+
+# set up our project name
+project(world CXX)
+
+set(SRC_WORLD_PROJECT
+   ${CMAKE_CURRENT_SOURCE_DIR}/StdAfx.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/StdAfx.h
+)
+
+if(WIN32)
+   set(SRC_WORLD_PROJECT ${SRC_WORLD_PROJECT} ${CMAKE_CURRENT_SOURCE_DIR}/resources.rc)
+endif()
+
+source_group(world FILES ${SRC_WORLD_PROJECT})
+
+set(sources
+  DBC/DBCStores.cpp
+	AchievementMgr.cpp 
+	CollideInterface.cpp  
+	VoiceChatHandler.cpp 
+	DayWatcherThread.cpp 
+	DisableMgr.cpp 
+	CommonScheduleThread.cpp 
+	ArenaTeam.cpp 
+	DatabaseCleaner.cpp 
+	ObjectStorage.cpp  
+	AddonMgr.cpp 
+	AIInterface.cpp 
+	AIEvents.cpp
+	AreaTrigger.cpp 
+	Arenas.cpp 
+	AuctionHouse.cpp 
+	AuctionMgr.cpp 
+	Battleground.cpp
+	BattlegroundCommands.cpp 
+	BattlegroundHandler.cpp 
+	BattlegroundMgr.cpp 
+    CalendarHandler.cpp
+    CalendarMgr.cpp
+	ChainAggroEntity.cpp 
+	Channel.cpp 
+	ChannelHandler.cpp 
+	CharacterHandler.cpp 
+	Chat.cpp 
+	ChatHandler.cpp 
+	CombatHandler.cpp 
+	Container.cpp 
+	Corpse.cpp 
+	Creature.cpp 
+	Entities/Summons/Summon.cpp
+	Entities/Summons/CompanionSummon.cpp
+	Entities/Summons/GuardianSummon.cpp
+	Entities/Summons/PossessedSummon.cpp
+	Entities/Summons/TotemSummon.cpp
+	Entities/Summons/WildSummon.cpp
+	debugcmds.cpp 
+	DuelHandler.cpp 
+	DynamicObject.cpp 
+	EquipmentSetMgr.cpp
+	EventableObject.cpp 
+	EventMgr.cpp 
+	faction.cpp 
+    GameEvent.cpp
+    GameEventMgr.cpp
+    GameEventMgrCommands.cpp
+	GameObject.cpp 
+	GMTicket.cpp 
+	GMTicketCommands.cpp
+	Gossip.cpp
+	Group.cpp 
+	GroupHandler.cpp 
+	Guild.cpp 
+	GuildHandler.cpp 
+	HonorHandler.cpp 
+	InstanceCommands.cpp 
+	Item.cpp 
+	ItemHandler.cpp 
+	ItemInterface.cpp 
+	Level0.cpp 
+	Level1.cpp 
+	Level2.cpp 
+	Level3.cpp 
+	LfgHandler.cpp 
+	LfgMgr.cpp 
+	LootMgr.cpp 
+	LocalizationMgr.cpp 
+	LogonCommClient.cpp 
+	LogonCommHandler.cpp 
+	MailSystem.cpp 
+	MapCell.cpp 
+	Map.cpp 
+	MapScriptInterface.cpp 
+	MapMgr.cpp 
+	MapMgrEventHandlers.cpp
+	MiscHandler.cpp 
+	MovementHandler.cpp 
+	NPCHandler.cpp 
+	Object.cpp 
+	ObjectMgr.cpp 
+	Opcodes.cpp 
+	Pet.cpp 
+	PetHandler.cpp 
+	Player.cpp 
+	PlayerPacketWrapper.cpp 
+	QueryHandler.cpp 
+	Quest.cpp 
+	QuestHandler.cpp 
+#    QuestLogEntry.cpp
+	QuestMgr.cpp 
+	QuestCommands.cpp 
+	RaidHandler.cpp 
+	RecallCommands.cpp 
+	ReputationHandler.cpp 
+	ScriptMgr.cpp 
+	SocialHandler.cpp 
+	SpeedDetector.cpp 
+	SpellAuras.cpp 
+	SpellTarget.cpp 
+	Spell.cpp 
+	StdAfx.cpp
+	SummonHandler.cpp
+	SpellEffects.cpp 
+	SpellHandler.cpp 
+	HackFixes.cpp 
+	Stats.cpp 
+	TaxiHandler.cpp 
+	TaxiMgr.cpp 
+	TerrainMgr.cpp 
+	TradeHandler.cpp 
+	TransporterHandler.cpp 
+	Unit.cpp 
+	Vehicle.cpp 
+#	VehicleHandler.cpp
+	WayPoints.cpp 
+	WeatherMgr.cpp 
+	World.cpp 
+ # 	World.rc
+	WorldCreator.cpp 
+	WorldSession.cpp 
+	WorldSocket.cpp 
+	WorldStatesHandler.cpp
+	WorldRunnable.cpp 
+	WordFilter.cpp 
+	Main.cpp 
+	Master.cpp 
+	CConsole.cpp 
+	ConsoleCommands.cpp 
+	ConsoleListener.cpp 
+	WUtil.cpp 
+	SpellProc.cpp
+	SpellProc_DeathKnight.cpp
+	SpellProc_Druid.cpp
+	SpellProc_Hunter.cpp
+	SpellProc_Items.cpp
+	SpellProc_Mage.cpp
+	SpellProc_Paladin.cpp
+	SpellProc_Priest.cpp
+	SpellProc_Rogue.cpp
+	SpellProc_Shaman.cpp
+	SpellProc_Warlock.cpp
+	SpellProc_Warrior.cpp
+	SpellMgr.cpp
+	Spell_DeathKnight.cpp
+	Spell_Druid.cpp
+	Spell_Hunter.cpp
+	Spell_Mage.cpp
+	Spell_Paladin.cpp
+	Spell_Priest.cpp
+	Spell_Rogue.cpp
+	Spell_Shaman.cpp
+	Spell_Warlock.cpp
+	Spell_Warrior.cpp
+	DeathKnight.cpp
+	Druid.cpp
+	Hunter.cpp
+	Mage.cpp
+	Paladin.cpp
+	Priest.cpp
+	Rogue.cpp
+	Shaman.cpp
+	Warlock.cpp
+	Warrior.cpp )
+
+if(WIN32)
+    set(sources ${sources} resources.rc)
+endif()
+
+SET( headers
+	AchievementMgr.h
+	AddonMgr.h
+	AIInterface.h
+	AIEvents.h
+	AreaTrigger.h
+	Arenas.h
+	ArenaTeam.h
+	AuctionHouse.h
+	AuctionMgr.h
+	BaseConsole.h
+	Battleground.h
+	BattlegroundMgr.h
+    CalendarMgr.h
+	ChainAggroEntity.h
+	CConsole.h
+	CellHandler.h
+	Channel.h
+	ChannelMgr.h
+	Chat.h
+	CollideInterface.h
+	CommonScheduleThread.h
+	Entities/Summons/CompanionSummon.h
+	ConsoleCommands.h
+	Container.h
+	Corpse.h
+	Creature.h
+	DatabaseCleaner.h
+	DayWatcherThread.h
+	DBC/DBCStores.h
+	DeathKnight.h
+	Definitions.h
+	DisableMgr.h
+	Druid.h
+	DynamicObject.h
+	EquipmentSetMgr.h
+	Events.h
+	EventableObject.h
+	EventMgr.h
+	faction.h
+    GameEvent.h
+    GameEventMgr.h
+	GameObject.h
+	Gossip.h
+	Group.h
+	Entities/Summons/GuardianSummon.h
+	Guild.h
+	HonorHandler.h
+	Hunter.h
+	IEventListener.h
+	Item.h
+	ItemInterface.h
+	ItemPrototype.h
+	LfgMgr.h
+	LocalizationMgr.h
+	LogonCommClient.h
+	LogonCommHandler.h
+	LootMgr.h
+	Mage.h
+	MailSystem.h
+	MainServerDefines.h
+	Map.h
+	MapCell.h
+	MapMgr.h
+	MapScriptInterface.h
+	Master.h
+	MiscHandler.h
+	NameTables.h
+	NPCHandler.h
+	Object.h
+	ObjectMgr.h
+	ObjectStorage.h
+	Opcodes.h
+	Paladin.h
+	Pet.h
+	Player.h
+	PlayerCache.h
+	Entities/Summons/PossessedSummon.h
+	Priest.h
+	Quest.h
+	QuestMgr.h
+#    QuestLogEntry.hpp
+	Rogue.h
+	ScriptMgr.h
+	ScriptSetup.h
+	Shaman.h
+	Skill.h
+	SkillNameMgr.h
+	SpeedDetector.h
+	Spell.h
+	SpellAuras.h
+	SpellFailure.h
+	SpellMgr.h
+	SpellNameHashes.h
+	SpellProc.h
+	SpellTarget.h
+	Stats.h
+	StdAfx.h
+	Entities/Summons/Summon.h
+	SummonHandler.h
+	TaxiMgr.h
+	TerrainMgr.h
+	Entities/Summons/TotemSummon.h
+	TransporterHandler.h
+	Unit.h
+	UpdateFields.h
+	UpdateMask.h
+	Vehicle.h
+	Warlock.h
+	Warrior.h
+	WeatherMgr.h
+	Entities/Summons/WildSummon.h
+	WordFilter.h
+	World.h
+	WorldCreator.h
+	WorldRunnable.h
+	WorldSession.h
+	WorldSocket.h
+	WorldStatesHandler.h
+	WorldStates.h
+	WUtil.h
+)
+
+include_directories(
+   ${OPENSSL_INCLUDE_DIR}
+   ${PCRE_INCLUDE_DIR}
+   ${CMAKE_SOURCE_DIR}/dep/recastnavigation/Detour/Include
+   ${CMAKE_SOURCE_DIR}/dep/recastnavigation/Recast/Include
+   ${CMAKE_SOURCE_DIR}/src/collision
+   ${CMAKE_SOURCE_DIR}/src/collision/Maps
+   ${CMAKE_SOURCE_DIR}/src/collision/Management
+   ${CMAKE_SOURCE_DIR}/src/collision/Models
+   ${CMAKE_SOURCE_DIR}/dep/g3dlite/include
+   ${CMAKE_SOURCE_DIR}/src/shared
+   ${CMAKE_CURRENT_SOURCE_DIR}
+   ${ZLIB_INCLUDE_DIRS}
+)
+
+add_executable(${PROJECT_NAME} ${sources} ${headers})
+
+if(USE_PCH AND PCHSupport_FOUND)
+    ADD_NATIVE_PRECOMPILED_HEADER(${PROJECT_NAME} StdAfx.h ${CMAKE_CURRENT_SOURCE_DIR}/StdAfx.cpp)
+endif()
+
+set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS TRUE)
+add_dependencies(${PROJECT_NAME} shared g3dlite collision Detour Recast)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/WorldConf.h.in ${CMAKE_CURRENT_SOURCE_DIR}/WorldConf.h)
+
+target_link_libraries(${PROJECT_NAME} shared g3dlite collision Detour Recast ${PCRE_LIBRARIES})
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION .)
