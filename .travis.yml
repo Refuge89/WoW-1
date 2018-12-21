@@ -22,4 +22,4 @@ before_install:
 script:
   - test -d _build || mkdir _build
   - cd _build
-  - cmake ../ -DBUILD_SCRIPTS=1 -DBUILD_TOOLS=1
+  - cmake ../ -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=1
